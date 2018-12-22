@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import './recipe.css';
 
 class Recipe extends Component {
+    static propTypes = {
+        title: PropTypes.string.isRequired,
+        ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+        instructions: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired
+    }
+
     render() {
         // Destructuring this object (title is valid as long as this.props.title exists)
         const { title, img, instructions } = this.props;
