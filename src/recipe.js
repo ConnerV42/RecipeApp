@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './recipe.css';
+import PropTypes from 'prop-types';
 
 class Recipe extends Component {
     static propTypes = {
