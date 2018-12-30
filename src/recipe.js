@@ -3,16 +3,22 @@ import './recipe.css';
 import PropTypes from 'prop-types';
 
 class Recipe extends Component {
+    static defaultProps = {
+        onDelete() { }
+    }
+
     static propTypes = {
         title: PropTypes.string.isRequired,
         ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
         instructions: PropTypes.string.isRequired,
-        img: PropTypes.string.isRequired
+        img: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        onDelete: PropTypes.func.isRequired
     }
 
     render() {
         // Destructuring this object (title is valid as long as this.props.title exists)
-        const { title, img, instructions } = this.props;
+        const { title, img, instructions, id, onDelete } = this.props;
         const ingredients = this.props.ingredients.map((ing, index) => (
             <li key={index}>{ing}</li> // one line of code means you don't need to return from map
         ));
@@ -31,6 +37,7 @@ class Recipe extends Component {
                     <p>
                         {instructions}
                     </p>
+                    <button type="button" onClick={() => onDelete(id)}>DELETE</button>
                 </div>
             </div>
         );
